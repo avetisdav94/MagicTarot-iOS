@@ -13,10 +13,26 @@
 		8B75167E2F00BD9500158704 /* TarotCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75167D2F00BD9500158704 /* TarotCard.swift */; };
 		8B7516802F00C55F00158704 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75167F2F00C55F00158704 /* HomeViewModel.swift */; };
 		8B7516842F00C68600158704 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7516832F00C68600158704 /* HomeView.swift */; };
-		8B7516872F00C9B700158704 /* DailyCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7516862F00C9B700158704 /* DailyCardComponent.swift */; };
 		8B7516892F00CD0C00158704 /* AppBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7516882F00CD0C00158704 /* AppBackground.swift */; };
 		8B75168D2F00D06500158704 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75168C2F00D06500158704 /* Color+Theme.swift */; };
 		8B7516902F00D63A00158704 /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75168F2F00D63A00158704 /* HeaderSectionView.swift */; };
+		8B7516942F00DB7E00158704 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7516932F00DB7E00158704 /* DesignSystem.swift */; };
+		8B8AF6272F017F3B00851192 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8B8AF6262F017F3B00851192 /* Localizable.xcstrings */; };
+		8B8AF6292F01875400851192 /* DailyCardSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6282F01875400851192 /* DailyCardSectionView.swift */; };
+		8B8AF62C2F01880200851192 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF62B2F01880200851192 /* GlassCard.swift */; };
+		8B8AF62F2F01DB9400851192 /* TarotCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF62E2F01DB9400851192 /* TarotCardView.swift */; };
+		8B8AF6312F01EEF400851192 /* Image+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6302F01EEF300851192 /* Image+Kingfisher.swift */; };
+		8B8AF6332F02003300851192 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6322F02003300851192 /* CardBackView.swift */; };
+		8B8AF63A2F02091300851192 /* DailyCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6392F02091300851192 /* DailyCardSheet.swift */; };
+		8B8AF63E2F02098300851192 /* InterpretationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF63D2F02098300851192 /* InterpretationView.swift */; };
+		8B8AF6412F020A4800851192 /* MagicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6402F020A4800851192 /* MagicButton.swift */; };
+		8B8AF6442F020A7C00851192 /* TypingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6432F020A7C00851192 /* TypingTextView.swift */; };
+		8B8AF6462F020EBD00851192 /* StreamingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6452F020EBD00851192 /* StreamingTextView.swift */; };
+		8B8AF6492F0213B200851192 /* GlassModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6482F0213B200851192 /* GlassModifier.swift */; };
+		8B8AF64B2F02163100851192 /* GeminiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF64A2F02163100851192 /* GeminiModels.swift */; };
+		8B8AF64D2F02164A00851192 /* TarotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF64C2F02164A00851192 /* TarotService.swift */; };
+		8B8AF64F2F0216E200851192 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF64E2F0216E200851192 /* Secrets.swift */; };
+		8B8AF6522F0218F900851192 /* CardPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AF6512F0218F900851192 /* CardPickerSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,10 +43,27 @@
 		8B75167D2F00BD9500158704 /* TarotCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotCard.swift; sourceTree = "<group>"; };
 		8B75167F2F00C55F00158704 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8B7516832F00C68600158704 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		8B7516862F00C9B700158704 /* DailyCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCardComponent.swift; sourceTree = "<group>"; };
 		8B7516882F00CD0C00158704 /* AppBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackground.swift; sourceTree = "<group>"; };
 		8B75168C2F00D06500158704 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		8B75168F2F00D63A00158704 /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
+		8B7516932F00DB7E00158704 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		8B8AF6252F017EE400851192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B8AF6262F017F3B00851192 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		8B8AF6282F01875400851192 /* DailyCardSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCardSectionView.swift; sourceTree = "<group>"; };
+		8B8AF62B2F01880200851192 /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		8B8AF62E2F01DB9400851192 /* TarotCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotCardView.swift; sourceTree = "<group>"; };
+		8B8AF6302F01EEF300851192 /* Image+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Kingfisher.swift"; sourceTree = "<group>"; };
+		8B8AF6322F02003300851192 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
+		8B8AF6392F02091300851192 /* DailyCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCardSheet.swift; sourceTree = "<group>"; };
+		8B8AF63D2F02098300851192 /* InterpretationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterpretationView.swift; sourceTree = "<group>"; };
+		8B8AF6402F020A4800851192 /* MagicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicButton.swift; sourceTree = "<group>"; };
+		8B8AF6432F020A7C00851192 /* TypingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingTextView.swift; sourceTree = "<group>"; };
+		8B8AF6452F020EBD00851192 /* StreamingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingTextView.swift; sourceTree = "<group>"; };
+		8B8AF6482F0213B200851192 /* GlassModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassModifier.swift; sourceTree = "<group>"; };
+		8B8AF64A2F02163100851192 /* GeminiModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiModels.swift; sourceTree = "<group>"; };
+		8B8AF64C2F02164A00851192 /* TarotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarotService.swift; sourceTree = "<group>"; };
+		8B8AF64E2F0216E200851192 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		8B8AF6512F0218F900851192 /* CardPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPickerSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +96,8 @@
 		8B7516662F0077BC00158704 /* MagicTarot */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AF6252F017EE400851192 /* Info.plist */,
+				8B8AF63B2F02096C00851192 /* Components */,
 				8B75168A2F00D04300158704 /* Core */,
 				8B75167C2F00785C00158704 /* Resources */,
 				8B75167B2F00785600158704 /* Services */,
@@ -94,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				8B75167D2F00BD9500158704 /* TarotCard.swift */,
+				8B8AF64A2F02163100851192 /* GeminiModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,6 +145,7 @@
 		8B7516782F00783D00158704 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AF6502F0218EB00851192 /* Reading */,
 				8B75167A2F00784E00158704 /* Screens */,
 				8B7516792F00784800158704 /* Components */,
 			);
@@ -118,8 +155,9 @@
 		8B7516792F00784800158704 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AF62D2F01DB8000851192 /* Cards */,
+				8B8AF62A2F0187E000851192 /* Common */,
 				8B75168E2F00D5A000158704 /* Home */,
-				8B7516862F00C9B700158704 /* DailyCardComponent.swift */,
 				8B7516882F00CD0C00158704 /* AppBackground.swift */,
 			);
 			path = Components;
@@ -129,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				8B7516912F00D97700158704 /* Home */,
+				8B8AF6392F02091300851192 /* DailyCardSheet.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -136,6 +175,7 @@
 		8B75167B2F00785600158704 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AF64C2F02164A00851192 /* TarotService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -143,6 +183,7 @@
 		8B75167C2F00785C00158704 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AF6262F017F3B00851192 /* Localizable.xcstrings */,
 				8B75166D2F0077BF00158704 /* Preview Content */,
 				8B75166B2F0077BF00158704 /* Assets.xcassets */,
 			);
@@ -152,7 +193,10 @@
 		8B75168A2F00D04300158704 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8B8AF6472F0213A700851192 /* ViewModifiers */,
+				8B7516922F00DB6400158704 /* Design */,
 				8B75168B2F00D05200158704 /* Extensions */,
+				8B8AF64E2F0216E200851192 /* Secrets.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -161,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				8B75168C2F00D06500158704 /* Color+Theme.swift */,
+				8B8AF6302F01EEF300851192 /* Image+Kingfisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				8B75168F2F00D63A00158704 /* HeaderSectionView.swift */,
+				8B8AF6282F01875400851192 /* DailyCardSectionView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -179,6 +225,82 @@
 				8B7516832F00C68600158704 /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8B7516922F00DB6400158704 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				8B7516932F00DB7E00158704 /* DesignSystem.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		8B8AF62A2F0187E000851192 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF62B2F01880200851192 /* GlassCard.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8B8AF62D2F01DB8000851192 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF62E2F01DB9400851192 /* TarotCardView.swift */,
+				8B8AF6322F02003300851192 /* CardBackView.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		8B8AF63B2F02096C00851192 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF6422F020A7200851192 /* Effects */,
+				8B8AF63F2F020A3C00851192 /* Common */,
+				8B8AF63C2F02097300851192 /* AI */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8B8AF63C2F02097300851192 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF63D2F02098300851192 /* InterpretationView.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		8B8AF63F2F020A3C00851192 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF6402F020A4800851192 /* MagicButton.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8B8AF6422F020A7200851192 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF6432F020A7C00851192 /* TypingTextView.swift */,
+				8B8AF6452F020EBD00851192 /* StreamingTextView.swift */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		8B8AF6472F0213A700851192 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF6482F0213B200851192 /* GlassModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		8B8AF6502F0218EB00851192 /* Reading */ = {
+			isa = PBXGroup;
+			children = (
+				8B8AF6512F0218F900851192 /* CardPickerSheet.swift */,
+			);
+			path = Reading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +345,8 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
+				ru,
 			);
 			mainGroup = 8B75165B2F0077BC00158704;
 			productRefGroup = 8B7516652F0077BC00158704 /* Products */;
@@ -241,6 +365,7 @@
 			files = (
 				8B75166F2F0077BF00158704 /* Preview Assets.xcassets in Resources */,
 				8B75166C2F0077BF00158704 /* Assets.xcassets in Resources */,
+				8B8AF6272F017F3B00851192 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,14 +376,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8AF6462F020EBD00851192 /* StreamingTextView.swift in Sources */,
 				8B7516802F00C55F00158704 /* HomeViewModel.swift in Sources */,
+				8B8AF64B2F02163100851192 /* GeminiModels.swift in Sources */,
+				8B8AF6492F0213B200851192 /* GlassModifier.swift in Sources */,
 				8B7516892F00CD0C00158704 /* AppBackground.swift in Sources */,
 				8B75168D2F00D06500158704 /* Color+Theme.swift in Sources */,
+				8B7516942F00DB7E00158704 /* DesignSystem.swift in Sources */,
+				8B8AF62C2F01880200851192 /* GlassCard.swift in Sources */,
+				8B8AF63E2F02098300851192 /* InterpretationView.swift in Sources */,
 				8B7516902F00D63A00158704 /* HeaderSectionView.swift in Sources */,
+				8B8AF6312F01EEF400851192 /* Image+Kingfisher.swift in Sources */,
 				8B7516682F0077BC00158704 /* MagicTarotApp.swift in Sources */,
+				8B8AF6522F0218F900851192 /* CardPickerSheet.swift in Sources */,
+				8B8AF6412F020A4800851192 /* MagicButton.swift in Sources */,
+				8B8AF6292F01875400851192 /* DailyCardSectionView.swift in Sources */,
 				8B75167E2F00BD9500158704 /* TarotCard.swift in Sources */,
+				8B8AF62F2F01DB9400851192 /* TarotCardView.swift in Sources */,
+				8B8AF63A2F02091300851192 /* DailyCardSheet.swift in Sources */,
+				8B8AF6442F020A7C00851192 /* TypingTextView.swift in Sources */,
+				8B8AF64D2F02164A00851192 /* TarotService.swift in Sources */,
+				8B8AF6332F02003300851192 /* CardBackView.swift in Sources */,
 				8B7516842F00C68600158704 /* HomeView.swift in Sources */,
-				8B7516872F00C9B700158704 /* DailyCardComponent.swift in Sources */,
+				8B8AF64F2F0216E200851192 /* Secrets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +535,7 @@
 				DEVELOPMENT_TEAM = YFFM247885;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MagicTarot/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -424,6 +565,7 @@
 				DEVELOPMENT_TEAM = YFFM247885;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MagicTarot/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -1,9 +1,3 @@
-//
-//  Color+Theme.swift
-//  MagicTarot
-//
-//  Created by developer on 28/12/2025.
-//
 
 import SwiftUI
 
@@ -12,11 +6,34 @@ extension Color {
 }
 
 struct ColorTheme {
-    //Background
+    // Background
     let backgroundTop = Color(hex: "0D0D1A")
     let backgroundMiddle = Color(hex: "1A1A2E")
     let backgroundBottom = Color(hex: "16213E")
     
+    // Accents
+    let primaryAccent = Color(hex: "9D4EDD")      // Фиолетовый
+    let secondaryAccent = Color(hex: "7B2CBF")    // Тёмный фиолетовый
+    let goldAccent = Color(hex: "FFD700")         // Золотой
+    let mysticalBlue = Color(hex: "3D5A80")       // Мистический синий
+    
+    // Cards
+    let cardBackground = Color(hex: "1E1E2E").opacity(0.8)
+    let cardBorder = Color(hex: "9D4EDD").opacity(0.3)
+    
+    // Text
+    let textPrimary = Color.white
+    let textSecondary = Color.white.opacity(0.7)
+    let textMuted = Color.white.opacity(0.5)
+    
+    // Status
+    let success = Color.green
+    let warning = Color.orange
+    let error = Color.red
+    
+    // Glassmorphism
+    let glassBackground = Color.white.opacity(0.1)
+    let glassBorder = Color.white.opacity(0.2)
 }
 
 extension Color {

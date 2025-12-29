@@ -1,46 +1,124 @@
-//
-//  TarotCard.swift
-//  MagicTarot
-//
-//  Created by developer on 28/12/2025.
-//
-
 import Foundation
 
+// MARK: - Enums for Filtering
+enum ArcanaType: String, Codable {
+    case major = "major"
+    case minor = "minor"
+}
 
+enum CardSuit: String, Codable {
+    case wands     // Buławy (Жезлы)
+    case cups      // Kielichy (Чаши)
+    case swords    // Miecze (Мечи)
+    case pentacles // Pentakle (Пентакли)
+    case none      // Для Старших Арканов
+}
+
+// MARK: - TarotCard Structure
 struct TarotCard: Identifiable, Codable {
-    var id = UUID()
-    let name: String
-    let imageName: String
+    let id = UUID()
+    let rank: Int          // Номер карты (0, 1, ... 14) для сортировки
+    let name: String       // Английское название (ключ для API)
+    let namePl: String     // Польское название (для UI)
+    let imageName: String  // Имя картинки в Assets
     let description: String
+    
+    // Новые поля для фильтров
+    let arcana: ArcanaType
+    let suit: CardSuit
+    
     let uprightMeaning: String
     let reversedMeaning: String
     let keyWords: [String]
 }
 
- let mockCards = [
+// MARK: - Mock Data (Обновленная)
+let mockCards: [TarotCard] = [
+    // --- MAJOR ARCANA ---
     TarotCard(
+        rank: 0,
         name: "The Fool",
-        imageName: "00-fool",
-        description: "A young man stands on the edge of a cliff, looking up at the sky with a small dog at his heels. He carries a white rose and a small bundle, representing innocence and the experiences yet to come.",
-        uprightMeaning: "Represents new beginnings, having faith in the future, being inexperienced, and embracing enthusiasm. It is a call to take a leap of faith.",
-        reversedMeaning: "Indicates recklessness, being naive, taking unnecessary risks, or holding back from a new adventure due to fear.",
-        keyWords: ["Beginnings", "Innocence", "Spontaneity", "Faith"]
+        namePl: "Głupiec",
+        imageName: "card_00_thefool", // Убедись, что картинка так называется в Assets
+        description: "Początek drogi, niewinność, spontaniczność.",
+        arcana: .major,
+        suit: .none,
+        uprightMeaning: "Nowe początki, wiara w przyszłość, entuzjazm.",
+        reversedMeaning: "Lekkomyślność, ryzyko, naiwność.",
+        keyWords: ["Początek", "Wolność", "Ryzyko"]
     ),
     TarotCard(
+        rank: 1,
         name: "The Magician",
-        imageName: "magician",
-        description: "A figure stands with one arm pointing to the sky and the other to the earth. On a table before him lie a cup, a pentacle, a sword, and a wand—the four elements of the tarot.",
-        uprightMeaning: "Signifies manifestation, resourcefulness, and the power to turn dreams into reality. You have all the tools you need to succeed.",
-        reversedMeaning: "Suggests manipulation, untapped potential, poor planning, or using one's skills for the wrong reasons.",
-        keyWords: ["Manifestation", "Power", "Resourcefulness", "Action"]
+        namePl: "Mag",
+        imageName: "card_01_magician",
+        description: "Manifestacja, siła woli, mistrzostwo.",
+        arcana: .major,
+        suit: .none,
+        uprightMeaning: "Moc twórcza, działanie, skupienie.",
+        reversedMeaning: "Manipulacja, słaba wola, iluzja.",
+        keyWords: ["Moc", "Działanie", "Wola"]
     ),
     TarotCard(
+        rank: 2,
         name: "The High Priestess",
-        imageName: "high_priestess",
-        description: "A serene woman sits between two pillars, one black and one white, representing duality. She holds a scroll and wears a crown showing the phases of the moon.",
-        uprightMeaning: "A call to trust your intuition and look for answers within. It represents mystery, subconscious knowledge, and spiritual insight.",
-        reversedMeaning: "Indicates a disconnect from intuition, hidden motives, superficiality, or secrets that are causing confusion.",
-        keyWords: ["Intuition", "Mystery", "Subconscious", "Wisdom"]
+        namePl: "Arcykapłanka",
+        imageName: "02-high_priestess",
+        description: "Intuicja, tajemnica, podświadomość.",
+        arcana: .major,
+        suit: .none,
+        uprightMeaning: "Słuchanie głosu wewnętrznego, mądrość.",
+        reversedMeaning: "Sekrety, blokada intuicji.",
+        keyWords: ["Intuicja", "Tajemnica", "Wiedza"]
+    ),
+    
+    // --- MINOR ARCANA (Examples) ---
+    TarotCard(
+        rank: 1,
+        name: "Ace of Wands",
+        namePl: "As Buław",
+        imageName: "wands-01",
+        description: "Iskra inspiracji, nowa pasja.",
+        arcana: .minor,
+        suit: .wands,
+        uprightMeaning: "Nowy projekt, energia, kreatywność.",
+        reversedMeaning: "Brak motywacji, opóźnienia.",
+        keyWords: ["Inspiracja", "Pasja", "Energia"]
+    ),
+    TarotCard(
+        rank: 10,
+        name: "Ten of Cups",
+        namePl: "Dziesiątka Kielichów",
+        imageName: "cups-10",
+        description: "Szczęście rodzinne, spełnienie emocjonalne.",
+        arcana: .minor,
+        suit: .cups,
+        uprightMeaning: "Harmonia, miłość, błogość.",
+        reversedMeaning: "Konflikty rodzinne, rozbite marzenia.",
+        keyWords: ["Rodzina", "Szczęście", "Harmonia"]
+    ),
+    TarotCard(
+        rank: 12, // Knight (Рыцарь)
+        name: "Knight of Swords",
+        namePl: "Rycerz Mieczy",
+        imageName: "swords-knight",
+        description: "Gwałtowne działanie, ambicja.",
+        arcana: .minor,
+        suit: .swords,
+        uprightMeaning: "Pośpiech, zdecydowanie, intelekt.",
+        reversedMeaning: "Agresja, impulsywność.",
+        keyWords: ["Ambicja", "Szybkość", "Intelekt"]
+    ),
+    TarotCard(
+        rank: 14, // King (Korol)
+        name: "King of Pentacles",
+        namePl: "Król Pentakli",
+        imageName: "pentacles-king",
+        description: "Bogactwo, stabilizacja, sukces materialny.",
+        arcana: .minor,
+        suit: .pentacles,
+        uprightMeaning: "Bezpieczeństwo finansowe, obfitość.",
+        reversedMeaning: "Chciwość, materializm.",
+        keyWords: ["Bogactwo", "Stabilność", "Biznes"]
     )
- ]
+]

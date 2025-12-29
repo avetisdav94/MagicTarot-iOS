@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct HeaderSectionView: View {
+    
+    let greetingText: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: AppSpacing.md) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Magic Tarot")
+                    .font(AppFont.mystical(24))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, Color.theme.goldAccent],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                Text(greetingText)
+                    .font(AppFont.caption())
+                    .foregroundStyle(Color.theme.textMuted)
+            }
+        }
+        Spacer()
     }
 }
 
 #Preview {
-    HeaderSectionView()
+    HeaderSectionView(greetingText: "Good Morning")
 }
