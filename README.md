@@ -1,47 +1,57 @@
-# 🔮 Magic Tarot - AI Powered iOS App
+# 🔮 Magic Tarot - AI Powered Spiritual Guide
 
-**Magic Tarot** is a modern iOS application that combines the ancient art 
-of Tarot with the power of Artificial Intelligence.
-Unlike standard tarot apps with static descriptions, Magic Tarot uses 
-**Gemini 1.5 Flash AI** to interpret card spreads based on the user's 
-current context, acting as a personal spiritual guide ("Witch Veronica").
+**Magic Tarot** is a premium iOS application that combines the ancient art of Tarot with modern Artificial Intelligence.
+Unlike standard apps with static text, Magic Tarot uses **Google Gemini 1.5 Flash** to generate unique, context-aware readings based on the specific card and its orientation (Upright/Reversed).
 
-## 📱 Screenshots
+Acting as a mystical guide ("Witch Veronica"), the app provides personalized advice, supporting **English**, **Polish**, and **Russian** languages.
 
-<!-- Сюда потом вставишь ссылки на скриншоты, когда сделаем дизайн -->
-*(Screenshots coming soon)*
+---
 
 ## ✨ Key Features
 
-- **Daily Card:** Get your personal card of the day with a unique AI 
-interpretation.
-- **AI Oracle:** Powered by Google Gemini API for dynamic and mystical 
-card readings.
-- **Digital Grimoire:** Save your readings to **SwiftData** history to 
-reflect on them later.
-- **Atmospheric UI:** Custom design system with animated star backgrounds 
-and haptic feedback.
-- **MVVM Architecture:** Clean code structure ensuring scalability and 
-testability.
+### 🌟 Core Experience
+- **Daily Card Ritual:** A beautiful "Card of the Day" experience with haptic feedback and animations.
+- **AI Oracle:** Real-time streaming interpretation of cards using **Generative AI** (Gemini).
+- **Magical Atmosphere:** Custom "Glassmorphism" design system, animated star backgrounds, and golden glowing effects.
 
-## 🛠 Tech Stack
+### 🃏 Interactive Deck
+- **Smart Card Picker:** Filter by Arcana (Major/Minor) or Suit (Wands, Cups, Swords, Pentacles).
+- **Search:** Instant search by card name in multiple languages.
+- **Visuals:** High-quality card assets with 3D flip animations and dynamic borders.
 
-- **Language:** Swift 5
-- **UI Framework:** SwiftUI
-- **Architecture:** MVVM (Model-View-ViewModel)
-- **Data Persistence:** SwiftData
-- **Networking:** Async/Await, Codable
-- **AI Integration:** Google Gemini API 1.5 Flash
-
-## 🚀 Roadmap
-
-- [x] Project Setup & Architecture
-- [x] Custom Design System (Dark Theme, Animations)
-- [x] AI Service Integration
-- [ ] Card Deck Grid & Search
-- [ ] History & Favorites (SwiftData)
-- [ ] App Store Release
+### 🌍 Localization
+Fully localized interface and AI responses:
+- 🇺🇸 English
+- 🇵🇱 Polish
+- 🇷🇺 Russian
 
 ---
-*Created by [Your Name] as part of the "Zero to Hero" iOS Mentorship 
-Program.*
+
+## 🛠 Technical Stack
+
+The project is built with **Clean Architecture** principles and modern Swift features.
+
+- **Language:** Swift 5.10
+- **UI Framework:** SwiftUI
+- **Architecture:** MVVM (Model-View-ViewModel) + Input/Output Pattern
+- **Concurrency:** Swift Concurrency (async/await, Task, MainActor)
+- **AI Integration:** Google Generative AI SDK (Gemini API)
+- **Design System:** Custom ViewModifiers, Extensions, and Theme Manager.
+- **Localization:** String Catalogs (.xcstrings) with `String(localized:)`.
+
+---
+
+## 🏗 Architecture Overview
+
+The app follows a strict separation of concerns:
+
+```text
+MagicTarot/
+├── App/                # App Entry Point & Configuration
+├── Models/             # Data Structures (TarotCard, GeminiModels)
+├── ViewModels/         # Business Logic (HomeViewModel)
+├── Views/
+│   ├── Screens/        # Full Screen Views (Home, CardPicker, Intro)
+│   └── Components/     # Reusable UI (GlassCard, MagicButton, TypingText)
+├── Services/           # Networking & AI Service
+└── Core/               # Design System, Extensions, Constants

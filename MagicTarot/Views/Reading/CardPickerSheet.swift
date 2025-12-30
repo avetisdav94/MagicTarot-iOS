@@ -1,52 +1,48 @@
 import SwiftUI
 
 struct CardPickerSheet: View {
-    // Входящие данные
+    // MARK: - Properties
     let allCards: [TarotCard]
-    let alreadySelected: [UUID] // Исправлено: UUID вместо Int
+    let alreadySelected: [UUID]
     let onSelect: (TarotCard, Bool) -> Void
     
-    // Закрытие окна
     @Environment(\.dismiss) private var dismiss
     
-    // Состояние
+    // MARK: - State
     @State private var searchText = ""
     @State private var selectedArcana: ArcanaFilter = .all
     @State private var selectedCard: TarotCard?
     @State private var isReversed = false
-    @State private var showConfirmation = false
     
-    // Фильтр для табов
+    // MARK: - Filter Enum
     enum ArcanaFilter: String, CaseIterable {
-        case all = "Wszystkie"
-        case major = "Wielkie Arkana"
-        case wands = "Buławy"
-        case cups = "Kielichy"
-        case swords = "Miecze"
-        case pentacles = "Pentakle"
+        case all = "filter_all"
+        case major = "filter_major"
+        case wands = "filter_wands"
+        case cups = "filter_cups"
+        case swords = "filter_swords"
+        case pentacles = "filter_pentacles"
+        
+        var localizedName: String {
+            String(localized: String.LocalizationValue(rawValue))
+        }
     }
     
-    // Логика фильтрации
+    // MARK: - Filtering Logic
     var filteredCards: [TarotCard] {
         var cards = allCards
         
-        // 1. Фильтр по типу
+        // 1. Фильтр по категории
         switch selectedArcana {
-        case .all:
-            break
-        case .major:
-            cards = cards.filter { $0.arcana == .major }
-        case .wands:
-            cards = cards.filter { $0.suit == .wands }
-        case .cups:
-            cards = cards.filter { $0.suit == .cups }
-        case .swords:
-            cards = cards.filter { $0.suit == .swords }
-        case .pentacles:
-            cards = cards.filter { $0.suit == .pentacles }
+        case .all: break
+        case .major: cards = cards.filter { $0.arcana == .major }
+        case .wands: cards = cards.filter { $0.suit == .wands }
+        case .cups: cards = cards.filter { $0.suit == .cups }
+        case .swords: cards = cards.filter { $0.suit == .swords }
+        case .pentacles: cards = cards.filter { $0.suit == .pentacles }
         }
         
-        // 2. Фильтр по поиску (ищем и на PL, и на EN)
+        // 2. Поиск
         if !searchText.isEmpty {
             cards = cards.filter {
                 $0.name.localizedCaseInsensitiveContains(searchText) ||
@@ -54,9 +50,11 @@ struct CardPickerSheet: View {
             }
         }
         
-        return cards
+        // 3. Сортировка по рангу
+        return cards.sorted { $0.rank < $1.rank }
     }
     
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             ZStack {
@@ -68,44 +66,45 @@ struct CardPickerSheet: View {
                     cardsGrid
                 }
             }
-            .navigationTitle("Wybierz kartę")
+            .navigationTitle(String(localized: "select_card_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Anuluj") {
-                        dismiss() // Исправлено: теперь работает
+                    Button(String(localized: "cancel_button")) {
+                        dismiss()
                     }
                     .foregroundStyle(Color.theme.textMuted)
                 }
             }
-            // Лист подтверждения выбора
-            .sheet(isPresented: $showConfirmation) {
-                if let card = selectedCard {
-                    CardConfirmationSheet(
-                        card: card,
-                        isReversed: $isReversed,
-                        onConfirm: {
-                            print("✅ Confirmed card \(card.namePl), reversed = \(isReversed)")
-                            onSelect(card, isReversed)
-                            showConfirmation = false
-                            dismiss() // Закрываем весь пикер
-                        }
-                    )
-                    .presentationDetents([.large])
-                    .presentationDragIndicator(.visible)
-                }
+            // Окно подтверждения
+            .sheet(item: $selectedCard) { card in
+                // SwiftUI сам "распаковал" карту, она точно существует здесь
+                CardConfirmationSheet(
+                    card: card,
+                    isReversed: $isReversed,
+                    onConfirm: {
+                        print("🃏 Selected: \(card.namePl)")
+                        onSelect(card, isReversed)
+                        selectedCard = nil // Закрываем окно, обнуляя карту
+                        dismiss()
+                    }
+                )
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
             }
         }
     }
     
-    // MARK: - Search Bar Component
+    // MARK: - Components UI
+    
     private var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(Color.theme.textMuted)
             
-            TextField("Szukaj karty...", text: $searchText)
+            TextField(String(localized: "search_placeholder"), text: $searchText)
                 .foregroundStyle(.white)
+                .autocorrectionDisabled()
         }
         .padding()
         .background(Color.theme.glassBackground)
@@ -113,17 +112,14 @@ struct CardPickerSheet: View {
         .padding()
     }
     
-    // MARK: - Filter Tabs Component
     private var filterTabs: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: AppSpacing.sm) {
                 ForEach(ArcanaFilter.allCases, id: \.self) { filter in
                     Button {
-                        withAnimation {
-                            selectedArcana = filter
-                        }
+                        withAnimation { selectedArcana = filter }
                     } label: {
-                        Text(filter.rawValue)
+                        Text(filter.localizedName)
                             .font(AppFont.caption())
                             .foregroundStyle(selectedArcana == filter ? .white : Color.theme.textMuted)
                             .padding(.horizontal, 12)
@@ -134,32 +130,55 @@ struct CardPickerSheet: View {
                                           ? Color.theme.primaryAccent
                                           : Color.theme.glassBackground)
                             )
+                            .overlay(
+                                Capsule().stroke(Color.theme.glassBorder, lineWidth: 1)
+                            )
                     }
                 }
             }
             .padding(.horizontal)
         }
+        .padding(.bottom, AppSpacing.sm)
     }
     
-    // MARK: - Grid Component
     private var cardsGrid: some View {
         ScrollView {
-            LazyVGrid(columns: [
-                GridItem(.adaptive(minimum: 100), spacing: AppSpacing.sm)
-            ], spacing: AppSpacing.sm) {
-                ForEach(filteredCards) { card in
-                    CardGridItem(
-                        card: card,
-                        isDisabled: alreadySelected.contains(card.id) // Сравниваем UUID
-                    ) {
-                        selectedCard = card
-                        isReversed = false // Сбрасываем переворот при новом выборе
-                        showConfirmation = true
+            if filteredCards.isEmpty {
+                VStack(spacing: 20) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 50))
+                        .foregroundStyle(Color.theme.textMuted.opacity(0.5))
+                        .padding(.top, 50)
+                    Text(String(localized: "no_cards_found"))
+                        .font(AppFont.body())
+                        .foregroundStyle(Color.theme.textMuted)
+                }
+                .frame(maxWidth: .infinity)
+            } else {
+                LazyVGrid(columns: [
+                    GridItem(.adaptive(minimum: 100), spacing: AppSpacing.md)
+                ], spacing: AppSpacing.md) {
+                    ForEach(filteredCards) { card in
+                        CardGridItem(
+                            card: card,
+                            isDisabled: alreadySelected.contains(card.id)
+                        ) {
+                        onTap: do {
+                                // Вибрация
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                                
+                                selectedCard = card
+                                isReversed = false
+                            }
+                        }
                     }
                 }
+                .padding()
+                .padding(.bottom, 50)
             }
-            .padding()
         }
+        .scrollDismissesKeyboard(.immediately)
     }
 }
 
@@ -172,47 +191,65 @@ struct CardGridItem: View {
     
     var body: some View {
         Button(action: onTap) {
-            VStack(spacing: 4) {
-                // Имитация карты
-                RoundedRectangle(cornerRadius: AppCornerRadius.small)
-                    .fill(
-                        LinearGradient(
-                            colors: [Color.theme.primaryAccent.opacity(0.3), Color.theme.backgroundMiddle],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
+            VStack(spacing: 6) {
+                // 1. Картинка в рамке
+                ZStack {
+                    if !card.imageName.isEmpty {
+                        Image(card.imageName) // Берем из Assets
+                            .resizable()
+                            .aspectRatio(contentMode: .fit) // Видно целиком
+                            .frame(height: 140)
+                            // background нужен, чтобы при .fit не было пустых мест по краям рамки
+                            .background(Color.theme.backgroundMiddle)
+                    } else {
+                        fallbackPlaceholder
+                    }
+                    
+                    // Затемнение для выбранных
+                    if isDisabled {
+                        Color.black.opacity(0.6)
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title)
+                            .foregroundStyle(.white)
+                    }
+                }
+                .cornerRadius(AppCornerRadius.medium)
+                // --- ПРИМЕНЯЕМ МАГИЮ ---
+                .if(!isDisabled) { view in
+                    view.magicalBorder(lineWidth: 1.5, cornerRadius: AppCornerRadius.medium)
+                }
+                .if(isDisabled) { view in
+                    view.overlay(
+                        RoundedRectangle(cornerRadius: AppCornerRadius.medium)
+                            .stroke(Color.gray.opacity(0.3), lineWidth: 1)
                     )
-                    .frame(height: 130)
-                    .overlay(
-                        VStack(spacing: 4) {
-                            // Показываем ранг карты (номер) вместо ID
-                            Text("\(card.rank)")
-                                .font(AppFont.headline())
-                                .foregroundStyle(Color.theme.goldAccent)
-                            
-                            // Звездочка для Старших Арканов
-                            if card.arcana == .major {
-                                Image(systemName: "star.fill")
-                                    .font(.caption)
-                                    .foregroundStyle(Color.theme.goldAccent.opacity(0.5))
-                            }
-                        }
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: AppCornerRadius.small)
-                            .stroke(Color.theme.glassBorder, lineWidth: 1)
-                    )
+                }
+                .shadow(color: .black.opacity(0.3), radius: 4, y: 2)
                 
-                // Название на польском
+                // 2. Имя
                 Text(card.namePl)
                     .font(AppFont.caption(11))
-                    .foregroundStyle(.white)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.center)
+                    .foregroundStyle(isDisabled ? Color.theme.textMuted : .white)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
             }
-            .opacity(isDisabled ? 0.4 : 1)
+            .opacity(isDisabled ? 0.6 : 1)
+            .scaleEffect(isDisabled ? 0.95 : 1)
         }
         .disabled(isDisabled)
+    }
+    
+    private var fallbackPlaceholder: some View {
+        RoundedRectangle(cornerRadius: AppCornerRadius.medium)
+            .fill(Color.theme.backgroundMiddle)
+            .frame(height: 140)
+            .overlay(
+                VStack(spacing: 4) {
+                    Text("\(card.rank)")
+                        .font(AppFont.headline())
+                        .foregroundStyle(Color.theme.goldAccent)
+                }
+            )
     }
 }
 
@@ -226,77 +263,47 @@ struct CardConfirmationSheet: View {
             Color.theme.backgroundMiddle.ignoresSafeArea()
             
             VStack(spacing: AppSpacing.lg) {
-                // Card Preview
-                VStack(spacing: AppSpacing.sm) {
-                    RoundedRectangle(cornerRadius: AppCornerRadius.card)
-                        .fill(Color.theme.glassBackground)
-                        .frame(width: 120, height: 200)
-                        .overlay(
-                            VStack {
-                                Text("\(card.rank)") // Ранг
-                                    .font(AppFont.headline(24))
-                                    .foregroundStyle(Color.theme.goldAccent)
-                                
-                                Text(card.namePl) // Имя PL
-                                    .font(AppFont.body())
-                                    .foregroundStyle(.white)
-                                    .multilineTextAlignment(.center)
-                                    .padding(.horizontal, 4)
-                            }
-                        )
-                        // Анимация переворота
-                        .rotationEffect(.degrees(isReversed ? 180 : 0))
-                        .animation(.spring(), value: isReversed)
-                    
-                    Text(card.namePl)
-                        .font(AppFont.headline())
-                        .foregroundStyle(.white)
-                }
+                Text(String(localized: "confirm_choice_title"))
+                    .font(AppFont.headline(20))
+                    .foregroundStyle(.white)
+                    .padding(.top, AppSpacing.lg)
                 
-                // Reversed toggle
-                VStack(spacing: AppSpacing.sm) {
-                    Text("Czy karta jest odwrócona?")
-                        .font(AppFont.body())
-                        .foregroundStyle(Color.theme.textSecondary)
-                    
-                    HStack(spacing: AppSpacing.lg) {
-                        ReversedButton(
-                            title: "Prosta",
-                            icon: "arrow.up",
-                            isSelected: !isReversed
-                        ) {
-                            isReversed = false
-                        }
-                        
-                        ReversedButton(
-                            title: "Odwrócona",
-                            icon: "arrow.down",
-                            isSelected: isReversed
-                        ) {
-                            isReversed = true
-                        }
-                    }
-                }
+                // Большая карта
+                TarotCardView(
+                    card: card,
+                    size: CGSize(width: 180, height: 310),
+                    isReversed: isReversed,
+                    showName: false
+                )
+                // Тоже добавим магию, но пожирнее
+                .shadow(color: Color.theme.goldAccent.opacity(0.2), radius: 20)
                 
-                // Keywords Preview
-                HStack(spacing: 6) {
-                    ForEach(card.keyWords.prefix(3), id: \.self) { keyword in
-                        Text(keyword)
-                            .font(AppFont.caption())
-                            .foregroundStyle(Color.theme.primaryAccent)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(
-                                Capsule()
-                                    .fill(Color.theme.primaryAccent.opacity(0.2))
-                            )
-                    }
+                Text(card.namePl)
+                    .font(AppFont.mystical(28))
+                    .foregroundStyle(Color.theme.goldAccent)
+                
+                HStack(spacing: AppSpacing.lg) {
+                    ReversedButton(
+                        title: String(localized: "upright"),
+                        icon: "arrow.up",
+                        isSelected: !isReversed
+                    ) { withAnimation { isReversed = false } }
+                    
+                    ReversedButton(
+                        title: String(localized: "reversed"),
+                        icon: "arrow.down",
+                        isSelected: isReversed
+                    ) { withAnimation { isReversed = true } }
                 }
+                .padding(.vertical)
                 
                 Spacer()
                 
-                // Confirm Button
-                MagicButton("Potwierdź wybór", icon: "checkmark", style: .primary) {
+                MagicButton(
+                    String(localized: "select_card_button"),
+                    icon: "checkmark",
+                    style: .primary
+                ) {
                     onConfirm()
                 }
                 .padding(.horizontal)
@@ -318,7 +325,6 @@ struct ReversedButton: View {
             VStack(spacing: 4) {
                 Image(systemName: icon)
                     .font(.system(size: 24))
-                
                 Text(title)
                     .font(AppFont.caption())
             }
@@ -332,18 +338,27 @@ struct ReversedButton: View {
                 RoundedRectangle(cornerRadius: AppCornerRadius.medium)
                     .stroke(isSelected ? Color.theme.goldAccent.opacity(0.5) : Color.clear, lineWidth: 1)
             )
+            .animation(.easeInOut(duration: 0.2), value: isSelected)
         }
         .buttonStyle(.plain)
     }
 }
 
-// MARK: - Preview
+// Расширение для условного модификатора (чтобы не дублировать код в GridItem)
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+
 #Preview {
     CardPickerSheet(
         allCards: mockCards,
         alreadySelected: [],
-        onSelect: { card, reversed in
-            print("Selected: \(card.namePl) (Reversed: \(reversed))")
-        }
+        onSelect: { _, _ in }
     )
 }

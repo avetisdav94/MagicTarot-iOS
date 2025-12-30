@@ -27,8 +27,16 @@ struct HeaderSectionView: View {
                     .font(AppFont.caption())
                     .foregroundStyle(Color.theme.textMuted)
             }
+            Spacer()
+            
+            CoinsBadge(
+                balance: 100,
+                size: .medium,
+                showPlusButton: true
+            )
         }
-        Spacer()
+        .padding(.horizontal,  AppSpacing.md)
+        .padding(.top, 60)
     }
 }
 

@@ -63,7 +63,7 @@ let mockCards: [TarotCard] = [
         rank: 2,
         name: "The High Priestess",
         namePl: "Arcykapłanka",
-        imageName: "02-high_priestess",
+        imageName: "card_02_priestess",
         description: "Intuicja, tajemnica, podświadomość.",
         arcana: .major,
         suit: .none,

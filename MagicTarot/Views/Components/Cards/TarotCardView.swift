@@ -22,7 +22,7 @@ struct TarotCardView: View {
             } else {
                 Image(card.imageName)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fit)
                 .frame(width: size.width, height: size.height)
                 .clipped() // Обрезаем, если картинка не влезает в пропорции
             }

@@ -10,15 +10,18 @@ import SwiftUI
 struct DailyCardSectionView: View {
     @ObservedObject var viewModel: HomeViewModel
     
+    @State private var showIntroSheet = false
+    
     @Binding var showCardPicker: Bool
     @Binding var showDailyCardSheet: Bool
+    
     
     var body: some View {
         Button {
             if viewModel.dailyCard != nil {
                 showDailyCardSheet = true
             }else {
-                showCardPicker = true
+                showIntroSheet = true
             }
         } label: {
             GlassCard {
@@ -79,6 +82,20 @@ struct DailyCardSectionView: View {
         }
         .buttonStyle(.plain)
         .padding(.horizontal, AppSpacing.md)
+        
+        .sheet(isPresented: $showIntroSheet){
+            SpreadIntroSheet(
+                onStart: {
+                    showIntroSheet = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        showCardPicker = true
+                    }
+                },
+                onCancel: {
+                    showIntroSheet = false
+                }
+            )
+        }
     }
 }
 

@@ -8,10 +8,63 @@
 
     },
     "🌅 Karta Dnia" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌅 Карта Дня"
+          }
+        }
+      }
     },
     "Anuluj" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
+          }
+        }
+      }
+    },
+    "begin_spread_button" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozpocznij rozkład"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начать расклад"
+          }
+        }
+      }
+    },
+    "cancel_button" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отмена"
+          }
+        }
+      }
     },
     "card_of_the_day_title" : {
       "localizations" : {
@@ -51,11 +104,52 @@
         }
       }
     },
+    "confirm_choice_title" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подтвердить выбор"
+          }
+        }
+      }
+    },
     "copy_button" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Копировать"
+          }
+        }
+      }
+    },
+    "cost_label" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koszt:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоимость:"
+          }
+        }
+      }
     },
     "Czy karta jest odwrócona?" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Карта перевернутая?"
+          }
+        }
+      }
     },
     "greeting_afternoon" : {
       "localizations" : {
@@ -66,9 +160,21 @@
           }
         },
         "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Witaj"
+          "variations" : {
+            "device" : {
+              "iphone" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "Witaj"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Witaj"
+                }
+              }
+            }
           }
         },
         "ru" : {
@@ -145,11 +251,79 @@
         }
       }
     },
+    "Koszt:" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоимость"
+          }
+        }
+      }
+    },
     "Magic Tarot" : {
 
     },
+    "no_cards_found" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Карты не найдены"
+          }
+        }
+      }
+    },
+    "reversed" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перевернутая"
+          }
+        }
+      }
+    },
     "save_button" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        }
+      }
+    },
+    "search_placeholder" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск карты..."
+          }
+        }
+      }
+    },
+    "select_card_button" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать эту карту"
+          }
+        }
+      }
+    },
+    "select_card_title" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбор карты"
+          }
+        }
+      }
     },
     "select_your_card_that_fell_out" : {
       "localizations" : {
@@ -174,10 +348,57 @@
       }
     },
     "share_button" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поделиться"
+          }
+        }
+      }
+    },
+    "spread_intro_description" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten rozkład pomoże Ci zrozumieć główną energię dzisiejszego dnia. Dowiesz się, na czym się skupić, a czego unikać. Wiedźma Weronika zinterpretuje wylosowaną kartę specjalnie dla Ciebie."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот расклад поможет понять главную энергию сегодняшнего дня. Ты узнаешь, на чем сфокусироваться, а чего избегать. Ведьма Вероника истолкует карту специально для тебя."
+          }
+        }
+      }
+    },
+    "spread_intro_title" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karta Dnia"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Карта Дня"
+          }
+        }
+      }
     },
     "Szukaj karty..." : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск карты..."
+          }
+        }
+      }
     },
     "tap_to_select" : {
       "localizations" : {
@@ -201,11 +422,36 @@
         }
       }
     },
+    "upright" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прямая"
+          }
+        }
+      }
+    },
     "witch_says" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ведьма Вероника говорит..."
+          }
+        }
+      }
     },
     "Wybierz kartę" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбери карту"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
